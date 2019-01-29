@@ -2,22 +2,18 @@
 // Created by HFY on 2019/1/29.
 //
 
-#ifndef GLITTER_HELLOTRIANGLEIBO_H
-#define GLITTER_HELLOTRIANGLEIBO_H
+#ifndef GLITTER_HelloTriangleExtend_H
+#define GLITTER_HelloTriangleExtend_H
 
 
-class HelloTriangleIBO {
+class HelloTriangleExtend {
 public:
-    /* Rectangle */
-    int runHelloTriangleIBO();
+    /* two triangle */
+    int runHelloDoubleTriangle();
 
-private:
-    enum LogType {
-        Shader = 0,
-        Program = 1,
-    };
-    void checkStatus(unsigned int handler, LogType type);
+    /* rectangle with EBO*/
+    int runHelloEBORectangle();
 };
 
 
-#endif //GLITTER_HELLOTRIANGLEIBO_H
+#endif //GLITTER_HelloTriangleExtend_H
