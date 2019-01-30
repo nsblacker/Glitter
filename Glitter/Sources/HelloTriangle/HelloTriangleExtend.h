@@ -13,6 +13,9 @@ public:
 
     /* rectangle with EBO*/
     int runHelloEBORectangle();
+
+    /* multiple buffer for one object*/
+    int runHelloColoredTriangle();
 };
 
 
