@@ -218,15 +218,18 @@ int HelloTriangleExtend::runHelloEBORectangle() {
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(recVertice), recVertice, GL_STATIC_DRAW);
-    glVertexAttribPointer(aPosLocation, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);	// Vertex attributes stay the same
-    glEnableVertexAttribArray(aPosLocation);
 
     unsigned int EBO;
     glGenBuffers(1, &EBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-    glVertexAttribPointer(aPosLocation, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
+    // This setting is only telling how to use vertices data, not indices data. What you need to do with indices data is bind data to EBO.
+    // OpenGL will know how to use it(float or int, how many times etc.) when you call glDrawElements
+    glVertexAttribPointer(aPosLocation, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);// tell VBO what to do with vertices data
+    glEnableVertexAttribArray(aPosLocation);
+
+    int renderCount = 0;
     // Rendering Loop
     while (glfwWindowShouldClose(mWindow) == false) {
         if (glfwGetKey(mWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -236,11 +239,19 @@ int HelloTriangleExtend::runHelloEBORectangle() {
         glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
+        // bling bling
+        if (renderCount ++ %2 == 0){
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            if (renderCount == 1000) renderCount = 0;
+        }else{
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
+
         // Render
         glUseProgram(shaderProgram);
         // draw first triangle using the data from the first VAO
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        //glDrawElements()
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 
         // Flip Buffers and Draw
