@@ -7,7 +7,8 @@
 
 
 class HelloShader {
-
+public:
+    int runHelloShader();
 };
 
 
