@@ -1,44 +1,16 @@
 //
-// Created by HFY on 2019/1/30.
+// Created by HFY on 2019/1/31.
 //
 
-/**
- * In fact, we have finished what this tutorial tell us do in HelloTriangleExtend. It's a colored triangle. Differently,
- * we finish it with two VBO to pass data, aPos and aColor to vertex shader. But in this section, we finished it
- * using one VBO, and describe how to use these data through glVertexAttribPointer. What matter is the last param and
- * the second last param, indicates offset and stride, will let OpenGL know how to use it.
- * You can skip this and see others in HelloShader directory, which show Object Oriented to make shader work
- * */
-#include "HelloShader.h"
-
+#include "HelloTexture.h"
+// Local Headers
 #include "glitter.hpp"
-#include <glad/glad.h>
-#include <glfw/glfw3.h>
 
-#include <iostream>
-#include "ShaderMgr.h"
+// Standard Headers
+#include <cstdio>
+#include <cstdlib>
 
-
-const char *vertexShaderSource_Shader = "#version 330 core\n"
-                                 "layout (location = 0) in vec3 aPos;\n"
-                                 "layout (location = 1) in vec3 aColor;\n"
-                                 "out vec3 colour;\n"
-                                 "void main()\n"
-                                 "{\n"
-                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-                                 "   colour = aColor;\n"
-                                 "}\0";
-
-const char *fragmentShaderSource_Shader = "#version 330 core\n"
-                                   "in vec3 colour;\n"
-                                   "out vec4 FragColor;\n"
-                                   "void main()\n"
-                                   "{\n"
-                                   "   FragColor = vec4(colour, 1.0f);\n"
-                                   "}\n\0";
-
-int HelloShader::runHelloShader() {
-
+int HelloTexture::runHelloTexture() {
     // Load GLFW and Create a Window
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -60,8 +32,8 @@ int HelloShader::runHelloShader() {
     fprintf(stderr, "OpenGL %s\n", glGetString(GL_VERSION));
 
 
-    std::string vertFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/triangle_color.vert";
-    std::string fragFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/triangle_color.frag";
+    std::string vertFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/rectangle_box.vert";
+    std::string fragFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/rectangle_box.frag";
     ShaderMgr shaderMgr;
     shaderMgr.attach(vertFile, ShaderMgr::ShaderType::Vertex);
     shaderMgr.attach(fragFile, ShaderMgr::ShaderType::Fragment);
@@ -70,9 +42,16 @@ int HelloShader::runHelloShader() {
 
     // Set up vertex data (and buffer(s)) and configure vertex attributes
     float vertices[] = {
-            -0.5f, -0.5f, 0.0f,     1.0f,0.0f,0.0f,
-            0.5f, -0.5f, 0.0f,      0.0f,1.0f,0.0f,
-            0.0f, 0.5f, 0.0f,       0.0f,0.0f,1.0f
+//     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
+            0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // 右上
+            0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // 右下
+            -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
+            -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // 左上
+    };
+
+    int  indices [] = {
+            0,1,3,
+            1,2,3
     };
 
     unsigned int VAO,VBO;
@@ -83,6 +62,10 @@ int HelloShader::runHelloShader() {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
+    unsigned int EBO;
+    glGenBuffers(1, &EBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     // Now we have data(vertices) should be rendered and how to use it(shader),  now we should tell OpenGL what param
     // these data should link to.
@@ -123,4 +106,3 @@ int HelloShader::runHelloShader() {
     glfwTerminate();
     return EXIT_SUCCESS;
 }
-
