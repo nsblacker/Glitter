@@ -50,27 +50,35 @@ file(GLOB PROJECT_SOURCES
         Glitter/Sources/HelloShader/HelloShader.h
         Glitter/Sources/HelloShader/ShaderMgr.cpp
         Glitter/Sources/HelloShader/ShaderMgr.h
+        Glitter/Sources/HelloTexture/HelloTexture.cpp
+        Glitter/Sources/HelloTexture/HelloTexture.h
         )
-file(GLOB PROJECT_SHADERS Glitter/Shaders/*.comp
-                          Glitter/Shaders/*.frag
-                          Glitter/Shaders/*.geom
-                          Glitter/Shaders/*.vert)
+file(GLOB PROJECT_MEDIA Glitter/Meida/Shaders/*.comp
+                        Glitter/Media/Shaders/*.frag
+                        Glitter/Media/Shaders/*.geom
+                        Glitter/Media/Shaders/*.vert
+                        Glitter/Media/Images/*.jpeg
+                        Glitter/Media/Images/*.jpg
+                        Glitter/Media/Images/*.png
+)
 file(GLOB PROJECT_CONFIGS CMakeLists.txt
                           Readme.md
                          .gitattributes
                          .gitignore
                          .gitmodules)
 
+
+
 source_group("Headers" FILES ${PROJECT_HEADERS})
-source_group("Shaders" FILES ${PROJECT_SHADERS})
+source_group("Media" FILES ${PROJECT_MEDIA})
 source_group("Sources" FILES ${PROJECT_SOURCES})
 source_group("Vendors" FILES ${VENDORS_SOURCES})
 
 add_definitions(-DGLFW_INCLUDE_NONE
                 -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
-                               ${PROJECT_SHADERS} ${PROJECT_CONFIGS}
-                               ${VENDORS_SOURCES} Glitter/Sources/HelloTexture/HelloTexture.cpp Glitter/Sources/HelloTexture/HelloTexture.h)
+                               ${PROJECT_MEDIA} ${PROJECT_CONFIGS}
+                               ${VENDORS_SOURCES} )
 target_link_libraries(${PROJECT_NAME} assimp glfw
                       ${GLFW_LIBRARIES} ${GLAD_LIBRARIES}
                       BulletDynamics BulletCollision LinearMath)

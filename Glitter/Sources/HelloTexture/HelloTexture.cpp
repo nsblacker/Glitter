@@ -4,7 +4,9 @@
 
 #include "HelloTexture.h"
 // Local Headers
+#define STB_IMAGE_IMPLEMENTATION
 #include "glitter.hpp"
+
 
 // Standard Headers
 #include <cstdio>
@@ -31,7 +33,6 @@ int HelloTexture::runHelloTexture() {
     gladLoadGL();
     fprintf(stderr, "OpenGL %s\n", glGetString(GL_VERSION));
 
-
     std::string vertFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/rectangle_box.vert";
     std::string fragFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/rectangle_box.frag";
     ShaderMgr shaderMgr;
@@ -39,6 +40,26 @@ int HelloTexture::runHelloTexture() {
     shaderMgr.attach(fragFile, ShaderMgr::ShaderType::Fragment);
     //shaderMgr.attach(vertexShaderSource_Shader, ShaderMgr::ShaderType::Vertex);
     //shaderMgr.attach(fragmentShaderSource_Shader, ShaderMgr::ShaderType::Fragment);
+
+    GLuint texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    int width, height, channels;
+    std::string fileNameString = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Images/container.jpg";
+    char const * fileName = fileNameString.c_str();
+    unsigned char *data = stbi_load(fileName, &width, &height, &channels, 0);
+    if (data) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,  GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+    } else {
+        std::cout << "load texel error" << std::endl;
+    }
+
 
     // Set up vertex data (and buffer(s)) and configure vertex attributes
     float vertices[] = {
@@ -70,12 +91,16 @@ int HelloTexture::runHelloTexture() {
     // Now we have data(vertices) should be rendered and how to use it(shader),  now we should tell OpenGL what param
     // these data should link to.
     unsigned int aPosLocation = glGetAttribLocation(shaderMgr.getProgram(), "aPos");// what it is in vertex shader. can also be got via glGetAttribLocation
-    glVertexAttribPointer(aPosLocation, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glVertexAttribPointer(aPosLocation, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(aPosLocation);
 
     unsigned int aColorLocation = glGetAttribLocation(shaderMgr.getProgram(), "aColor");
-    glVertexAttribPointer(aColorLocation, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(aColorLocation, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(aColorLocation);
+
+    unsigned int aTexelCoord = glGetAttribLocation(shaderMgr.getProgram(), "aTexelCoord");
+    glVertexAttribPointer(aTexelCoord, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glEnableVertexAttribArray(aTexelCoord);
 
     // Rendering Loop
     while (glfwWindowShouldClose(mWindow) == false) {
@@ -90,6 +115,7 @@ int HelloTexture::runHelloTexture() {
         shaderMgr.useProgram();
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 
         // Flip Buffers and Draw
