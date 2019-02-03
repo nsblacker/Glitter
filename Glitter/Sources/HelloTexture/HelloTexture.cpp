@@ -38,9 +38,8 @@ int HelloTexture::runHelloTexture() {
     ShaderMgr shaderMgr;
     shaderMgr.attach(vertFile, ShaderMgr::ShaderType::Vertex);
     shaderMgr.attach(fragFile, ShaderMgr::ShaderType::Fragment);
-    //shaderMgr.attach(vertexShaderSource_Shader, ShaderMgr::ShaderType::Vertex);
-    //shaderMgr.attach(fragmentShaderSource_Shader, ShaderMgr::ShaderType::Fragment);
-
+    
+    // texture
     GLuint texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -50,8 +49,9 @@ int HelloTexture::runHelloTexture() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
     int width, height, channels;
-    std::string fileNameString = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Images/container.jpg";
-    char const * fileName = fileNameString.c_str();
+    //std::string fileNameString = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Images/container.jpg";
+    //char const * fileName = fileNameString.c_str();
+    char const * fileName = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Images/container.jpg";
     unsigned char *data = stbi_load(fileName, &width, &height, &channels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,  GL_UNSIGNED_BYTE, data);
@@ -63,7 +63,7 @@ int HelloTexture::runHelloTexture() {
 
     // Set up vertex data (and buffer(s)) and configure vertex attributes
     float vertices[] = {
-//     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
+        //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
             0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // 右上
             0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // 右下
             -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
