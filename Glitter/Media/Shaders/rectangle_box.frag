@@ -2,10 +2,13 @@
 in vec3 colour;
 in vec2 texelCoord;
 uniform sampler2D inputImageTexture;
+uniform sampler2D inputImageTexture2;
+uniform float mixValue;
 out vec4 FragColor;
 void main()
 {
     vec4 texelColor = texture(inputImageTexture, texelCoord);
-    FragColor = texelColor * vec4(colour,1.0f);
+    vec4 texelColor2 = texture(inputImageTexture2, texelCoord);
+    FragColor = mix(texelColor, texelColor2, mixValue);
 }
 

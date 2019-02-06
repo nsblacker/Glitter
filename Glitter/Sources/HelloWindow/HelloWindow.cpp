@@ -2,11 +2,8 @@
 // Created by HFY on 2019/1/29.
 //
 // Local Headers
+#define STB_IMAGE_IMPLEMENTATION
 #include "glitter.hpp"
-
-// System Headers
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 // Standard Headers
 #include <cstdio>

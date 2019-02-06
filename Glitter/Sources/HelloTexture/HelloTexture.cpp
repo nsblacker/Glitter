@@ -3,12 +3,7 @@
 //
 
 #include "HelloTexture.h"
-// Local Headers
-#define STB_IMAGE_IMPLEMENTATION
 #include "glitter.hpp"
-
-
-// Standard Headers
 #include <cstdio>
 #include <cstdlib>
 

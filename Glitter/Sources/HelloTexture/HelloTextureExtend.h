@@ -7,6 +7,12 @@
 
 
 class HelloTextureExtend {
+public:
+    int runHelloTextureSmile();
+    int runHelloTextureFourSmile();
+    int runHelloTextureCenterSmile();
+    int runHelloTextureMixValue();
+
 
 };
 

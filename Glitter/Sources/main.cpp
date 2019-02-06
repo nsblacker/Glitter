@@ -1,11 +1,12 @@
 // Test Source Headers
 #include "HelloWindow/HelloWindow.h"
-
 #include "HelloTriangle/HelloTriangle.h"
 #include "HelloTriangle/HelloTriangleExtend.h"
 #include "HelloTexture/HelloTexture.h"
+#include "HelloTexture/HelloTextureExtend.h"
 
 #include "HelloShader/HelloShader.h"
+
 
 int main(int argc, char * argv[]) {
 
@@ -17,6 +18,9 @@ int main(int argc, char * argv[]) {
 
 //    HelloShader helloShader;
 //    helloShader.runHelloShader();
-    HelloTexture helloTexture;
-    helloTexture.runHelloTexture();
+//    HelloTexture helloTexture;
+//    helloTexture.runHelloTexture();
+
+    HelloTextureExtend helloTextureExtend;
+    helloTextureExtend.runHelloTextureMixValue();
 }
