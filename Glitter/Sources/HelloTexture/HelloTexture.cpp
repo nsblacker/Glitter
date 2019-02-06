@@ -33,8 +33,8 @@ int HelloTexture::runHelloTexture() {
     gladLoadGL();
     fprintf(stderr, "OpenGL %s\n", glGetString(GL_VERSION));
 
-    std::string vertFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/rectangle_box.vert";
-    std::string fragFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/rectangle_box.frag";
+    std::string vertFile = "../../Glitter/Media/Shaders/rectangle_box.vert";
+    std::string fragFile = "../../Glitter/Media/Shaders/rectangle_box.frag";
     ShaderMgr shaderMgr;
     shaderMgr.attach(vertFile, ShaderMgr::ShaderType::Vertex);
     shaderMgr.attach(fragFile, ShaderMgr::ShaderType::Fragment);
@@ -51,7 +51,7 @@ int HelloTexture::runHelloTexture() {
     int width, height, channels;
     //std::string fileNameString = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Images/container.jpg";
     //char const * fileName = fileNameString.c_str();
-    char const * fileName = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Images/container.jpg";
+    char const * fileName = "../../Glitter/Media/Images/container.jpg";
     unsigned char *data = stbi_load(fileName, &width, &height, &channels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,  GL_UNSIGNED_BYTE, data);

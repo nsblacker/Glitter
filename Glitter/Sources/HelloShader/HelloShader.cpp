@@ -60,8 +60,8 @@ int HelloShader::runHelloShader() {
     fprintf(stderr, "OpenGL %s\n", glGetString(GL_VERSION));
 
 
-    std::string vertFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/triangle_color.vert";
-    std::string fragFile = "/Users/hfy/NSblacker/Code/Glitter/Glitter/Media/Shaders/triangle_color.frag";
+    std::string vertFile = "../../Glitter/Media/Shaders/triangle_color.vert";
+    std::string fragFile = "../../Glitter/Media/Shaders/triangle_color.frag";
     ShaderMgr shaderMgr;
     shaderMgr.attach(vertFile, ShaderMgr::ShaderType::Vertex);
     shaderMgr.attach(fragFile, ShaderMgr::ShaderType::Fragment);
