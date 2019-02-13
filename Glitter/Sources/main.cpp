@@ -4,6 +4,7 @@
 #include "HelloTriangle/HelloTriangleExtend.h"
 #include "HelloTexture/HelloTexture.h"
 #include "HelloTexture/HelloTextureExtend.h"
+#include "HelloTransform/HelloTransform.h"
 
 #include "HelloShader/HelloShader.h"
 
@@ -21,6 +22,9 @@ int main(int argc, char * argv[]) {
 //    HelloTexture helloTexture;
 //    helloTexture.runHelloTexture();
 
-    HelloTextureExtend helloTextureExtend;
-    helloTextureExtend.runHelloTextureMixValue();
+//    HelloTextureExtend helloTextureExtend;
+//    helloTextureExtend.runHelloTextureMixValue();
+
+    HelloTransform helloTransform;
+    helloTransform.runHelloTransformTwoBoxes();
 }
