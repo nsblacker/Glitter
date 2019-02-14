@@ -5,6 +5,7 @@
 #include "HelloTexture/HelloTexture.h"
 #include "HelloTexture/HelloTextureExtend.h"
 #include "HelloTransform/HelloTransform.h"
+#include "HelloCoordSystem/HelloCoordSystem.h"
 
 #include "HelloShader/HelloShader.h"
 
@@ -23,8 +24,11 @@ int main(int argc, char * argv[]) {
 //    helloTexture.runHelloTexture();
 
 //    HelloTextureExtend helloTextureExtend;
-//    helloTextureExtend.runHelloTextureMixValue();
+//    helloTextureExtend.runHelloTextureSmile();
 
-    HelloTransform helloTransform;
-    helloTransform.runHelloTransformTwoBoxes();
+//    HelloTransform helloTransform;
+//    helloTransform.runHelloTransformTwoBoxes();
+
+    HelloCoordSystem helloCoordSystem;
+    helloCoordSystem.runHelloCoordSystem();
 }

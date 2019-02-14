@@ -112,6 +112,8 @@ int HelloTextureExtend::runHelloTextureSmile() {
     glGenerateMipmap(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, 0);
 
+    shaderMgr.useProgram();
+    glUniform1f(glGetUniformLocation(shaderMgr.getProgram(), "mixValue"), 0.2);
 
     // Rendering Loop
     while (glfwWindowShouldClose(mWindow) == false) {
