@@ -6,6 +6,7 @@
 #include "HelloTexture/HelloTextureExtend.h"
 #include "HelloTransform/HelloTransform.h"
 #include "HelloCoordSystem/HelloCoordSystem.h"
+#include "HelloCamera/HelloCamera.h"
 
 #include "HelloShader/HelloShader.h"
 
@@ -29,6 +30,9 @@ int main(int argc, char * argv[]) {
 //    HelloTransform helloTransform;
 //    helloTransform.runHelloTransformTwoBoxes();
 
-    HelloCoordSystem helloCoordSystem;
-    helloCoordSystem.runHelloCoordSystem();
+//    HelloCoordSystem helloCoordSystem;
+//    helloCoordSystem.runHelloCoordSystem();
+
+    HelloCamera helloCamera;
+    helloCamera.runHelloCameraLookAround();
 }

@@ -54,7 +54,13 @@ file(GLOB PROJECT_SOURCES
         Glitter/Sources/HelloTexture/HelloTexture.h
         Glitter/Sources/HelloTexture/HelloTextureExtend.cpp
         Glitter/Sources/HelloTexture/HelloTextureExtend.h
-        )
+        Glitter/Sources/HelloTransform/HelloTransform.cpp
+        Glitter/Sources/HelloTransform/HelloTransform.h
+        Glitter/Sources/HelloCoordSystem/HelloCoordSystem.cpp
+        Glitter/Sources/HelloCoordSystem/HelloCoordSystem.h
+        Glitter/Sources/HelloCamera/HelloCamera.cpp
+        Glitter/Sources/HelloCamera/HelloCamera.h
+)
 file(GLOB PROJECT_MEDIA Glitter/Meida/Shaders/*.comp
                         Glitter/Media/Shaders/*.frag
                         Glitter/Media/Shaders/*.geom
@@ -80,7 +86,7 @@ add_definitions(-DGLFW_INCLUDE_NONE
                 -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_MEDIA} ${PROJECT_CONFIGS}
-                               ${VENDORS_SOURCES} Glitter/Sources/HelloTransform/HelloTransform.cpp Glitter/Sources/HelloTransform/HelloTransform.h Glitter/Sources/HelloCoordSystem/HelloCoordSystem.cpp Glitter/Sources/HelloCoordSystem/HelloCoordSystem.h)
+                               ${VENDORS_SOURCES})
 target_link_libraries(${PROJECT_NAME} assimp glfw
                       ${GLFW_LIBRARIES} ${GLAD_LIBRARIES}
                       BulletDynamics BulletCollision LinearMath)
