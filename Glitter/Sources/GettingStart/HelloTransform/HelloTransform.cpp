@@ -273,8 +273,12 @@ int HelloTransform::runHelloTransformRotateRepeatly() {
     glUniform1i(glGetUniformLocation(shaderMgr.getProgram(), "inputImageTexture2"), 1);
 
     // 先旋转，再缩放
+    glm::vec4 vec(0.5f, 0.5f, 0.0f, 1.0f);
     glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.5, 0.5, 1.0));
+    vec = trans * vec;
+    std::cout << vec.x <<"," <<vec.y<<"," << vec.z<<"," << std::endl;
+
     trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
     GLuint transformLoc = glGetUniformLocation(shaderMgr.getProgram(), "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
@@ -294,6 +298,7 @@ int HelloTransform::runHelloTransformRotateRepeatly() {
 
         // 每次渲染重新生成旋转矩阵，注释调这里会很奇妙
         glm::mat4 trans = glm::mat4(1.0f);
+
         trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f)); // switch the order
         trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0, 0.0, 1.0)); // switch the order
 

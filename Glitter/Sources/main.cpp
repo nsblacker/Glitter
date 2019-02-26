@@ -27,12 +27,12 @@ int main(int argc, char * argv[]) {
 //    HelloTextureExtend helloTextureExtend;
 //    helloTextureExtend.runHelloTextureSmile();
 
-//    HelloTransform helloTransform;
-//    helloTransform.runHelloTransformTwoBoxes();
+    HelloTransform helloTransform;
+    helloTransform.runHelloTransformRotateRepeatly();
 
 //    HelloCoordSystem helloCoordSystem;
 //    helloCoordSystem.runHelloCoordSystem();
 
-    HelloCamera helloCamera;
-    helloCamera.runHelloCameraLookAround();
+//    HelloCamera helloCamera;
+//    helloCamera.runHelloCameraLookAround();
 }

@@ -40,26 +40,26 @@ file(GLOB VENDORS_SOURCES Glitter/Vendor/glad/src/glad.c)
 file(GLOB PROJECT_HEADERS Glitter/Headers/*.hpp)
 file(GLOB PROJECT_SOURCES
         Glitter/Sources/*.cpp
-        Glitter/Sources/HelloWindow/HelloWindow.cpp
-        Glitter/Sources/HelloWindow/HelloWindow.h
-        Glitter/Sources/HelloTriangle/HelloTriangle.cpp
-        Glitter/Sources/HelloTriangle/HelloTriangle.h
-        Glitter/Sources/HelloTriangle/HelloTriangleExtend.cpp
-        Glitter/Sources/HelloTriangle/HelloTriangleExtend.h
-        Glitter/Sources/HelloShader/HelloShader.cpp
-        Glitter/Sources/HelloShader/HelloShader.h
-        Glitter/Sources/HelloShader/ShaderMgr.cpp
-        Glitter/Sources/HelloShader/ShaderMgr.h
-        Glitter/Sources/HelloTexture/HelloTexture.cpp
-        Glitter/Sources/HelloTexture/HelloTexture.h
-        Glitter/Sources/HelloTexture/HelloTextureExtend.cpp
-        Glitter/Sources/HelloTexture/HelloTextureExtend.h
-        Glitter/Sources/HelloTransform/HelloTransform.cpp
-        Glitter/Sources/HelloTransform/HelloTransform.h
-        Glitter/Sources/HelloCoordSystem/HelloCoordSystem.cpp
-        Glitter/Sources/HelloCoordSystem/HelloCoordSystem.h
-        Glitter/Sources/HelloCamera/HelloCamera.cpp
-        Glitter/Sources/HelloCamera/HelloCamera.h
+        Glitter/Sources/GettingStart/HelloWindow/HelloWindow.cpp
+        Glitter/Sources/GettingStart/HelloWindow/HelloWindow.h
+        Glitter/Sources/GettingStart/HelloTriangle/HelloTriangle.cpp
+        Glitter/Sources/GettingStart/HelloTriangle/HelloTriangle.h
+        Glitter/Sources/GettingStart/HelloTriangle/HelloTriangleExtend.cpp
+        Glitter/Sources/GettingStart/HelloTriangle/HelloTriangleExtend.h
+        Glitter/Sources/GettingStart/HelloShader/HelloShader.cpp
+        Glitter/Sources/GettingStart/HelloShader/HelloShader.h
+        Glitter/Sources/GettingStart/HelloShader/ShaderMgr.cpp
+        Glitter/Sources/GettingStart/HelloShader/ShaderMgr.h
+        Glitter/Sources/GettingStart/HelloTexture/HelloTexture.cpp
+        Glitter/Sources/GettingStart/HelloTexture/HelloTexture.h
+        Glitter/Sources/GettingStart/HelloTexture/HelloTextureExtend.cpp
+        Glitter/Sources/GettingStart/HelloTexture/HelloTextureExtend.h
+        Glitter/Sources/GettingStart/HelloTransform/HelloTransform.cpp
+        Glitter/Sources/GettingStart/HelloTransform/HelloTransform.h
+        Glitter/Sources/GettingStart/HelloCoordSystem/HelloCoordSystem.cpp
+        Glitter/Sources/GettingStart/HelloCoordSystem/HelloCoordSystem.h
+        Glitter/Sources/GettingStart/HelloCamera/HelloCamera.cpp
+        Glitter/Sources/GettingStart/HelloCamera/HelloCamera.h
 )
 file(GLOB PROJECT_MEDIA Glitter/Meida/Shaders/*.comp
                         Glitter/Media/Shaders/*.frag
@@ -86,7 +86,7 @@ add_definitions(-DGLFW_INCLUDE_NONE
                 -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_MEDIA} ${PROJECT_CONFIGS}
-                               ${VENDORS_SOURCES})
+                               ${VENDORS_SOURCES} Glitter/Sources/Lighting/HelloColor/HelloColors.cpp Glitter/Sources/Lighting/HelloColor/HelloColors.h)
 target_link_libraries(${PROJECT_NAME} assimp glfw
                       ${GLFW_LIBRARIES} ${GLAD_LIBRARIES}
                       BulletDynamics BulletCollision LinearMath)
