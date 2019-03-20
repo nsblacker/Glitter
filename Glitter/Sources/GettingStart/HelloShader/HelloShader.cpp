@@ -16,7 +16,7 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
-#include "ShaderMgr.h"
+#include "../../../Service/ShaderMgr.h"
 
 
 const char *vertexShaderSource_Shader = "#version 330 core\n"

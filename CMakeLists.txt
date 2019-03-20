@@ -48,8 +48,6 @@ file(GLOB PROJECT_SOURCES
         Glitter/Sources/GettingStart/HelloTriangle/HelloTriangleExtend.h
         Glitter/Sources/GettingStart/HelloShader/HelloShader.cpp
         Glitter/Sources/GettingStart/HelloShader/HelloShader.h
-        Glitter/Sources/GettingStart/HelloShader/ShaderMgr.cpp
-        Glitter/Sources/GettingStart/HelloShader/ShaderMgr.h
         Glitter/Sources/GettingStart/HelloTexture/HelloTexture.cpp
         Glitter/Sources/GettingStart/HelloTexture/HelloTexture.h
         Glitter/Sources/GettingStart/HelloTexture/HelloTextureExtend.cpp
@@ -60,7 +58,17 @@ file(GLOB PROJECT_SOURCES
         Glitter/Sources/GettingStart/HelloCoordSystem/HelloCoordSystem.h
         Glitter/Sources/GettingStart/HelloCamera/HelloCamera.cpp
         Glitter/Sources/GettingStart/HelloCamera/HelloCamera.h
+        Glitter/Sources/Lighting/HelloColor/HelloColors.cpp
+        Glitter/Sources/Lighting/HelloColor/HelloColors.h
+        Glitter/Sources/AdvancedOpenGL/HelloFrameBufferObject.cpp
+        Glitter/Sources/AdvancedOpenGL/HelloFrameBufferObject.h
 )
+
+file(GLOB PROJECT_SERVICE Glitter/Service/*.cpp
+        Glitter/Service/*.h
+        Glitter/Service/*.hpp
+)
+
 file(GLOB PROJECT_MEDIA Glitter/Meida/Shaders/*.comp
                         Glitter/Media/Shaders/*.frag
                         Glitter/Media/Shaders/*.geom
@@ -69,6 +77,7 @@ file(GLOB PROJECT_MEDIA Glitter/Meida/Shaders/*.comp
                         Glitter/Media/Images/*.jpg
                         Glitter/Media/Images/*.png
 )
+
 file(GLOB PROJECT_CONFIGS CMakeLists.txt
                           Readme.md
                          .gitattributes
@@ -81,12 +90,14 @@ source_group("Headers" FILES ${PROJECT_HEADERS})
 source_group("Media" FILES ${PROJECT_MEDIA})
 source_group("Sources" FILES ${PROJECT_SOURCES})
 source_group("Vendors" FILES ${VENDORS_SOURCES})
+source_group("Service" FILES ${PROJECT_SERVICE})
 
 add_definitions(-DGLFW_INCLUDE_NONE
                 -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${PROJECT_HEADERS}
                                ${PROJECT_MEDIA} ${PROJECT_CONFIGS}
-                               ${VENDORS_SOURCES} Glitter/Sources/Lighting/HelloColor/HelloColors.cpp Glitter/Sources/Lighting/HelloColor/HelloColors.h)
+                                ${PROJECT_SERVICE}
+                               ${VENDORS_SOURCES})
 target_link_libraries(${PROJECT_NAME} assimp glfw
                       ${GLFW_LIBRARIES} ${GLAD_LIBRARIES}
                       BulletDynamics BulletCollision LinearMath)

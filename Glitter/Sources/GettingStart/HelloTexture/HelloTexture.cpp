@@ -28,8 +28,8 @@ int HelloTexture::runHelloTexture() {
     gladLoadGL();
     fprintf(stderr, "OpenGL %s\n", glGetString(GL_VERSION));
 
-    std::string vertFile = "../../Glitter/Media/Shaders/rectangle_box.vert";
-    std::string fragFile = "../../Glitter/Media/Shaders/rectangle_box.frag";
+    std::string vertFile = "../../Glitter/Media/Shaders/light_box.vert";
+    std::string fragFile = "../../Glitter/Media/Shaders/light_box.frag";
     ShaderMgr shaderMgr;
     shaderMgr.attach(vertFile, ShaderMgr::ShaderType::Vertex);
     shaderMgr.attach(fragFile, ShaderMgr::ShaderType::Fragment);

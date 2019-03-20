@@ -1,14 +1,16 @@
 // Test Source Headers
-#include "HelloWindow/HelloWindow.h"
-#include "HelloTriangle/HelloTriangle.h"
-#include "HelloTriangle/HelloTriangleExtend.h"
-#include "HelloTexture/HelloTexture.h"
-#include "HelloTexture/HelloTextureExtend.h"
-#include "HelloTransform/HelloTransform.h"
-#include "HelloCoordSystem/HelloCoordSystem.h"
-#include "HelloCamera/HelloCamera.h"
+#include "GettingStart/HelloWindow/HelloWindow.h"
+#include "GettingStart/HelloTriangle/HelloTriangle.h"
+#include "GettingStart/HelloTriangle/HelloTriangleExtend.h"
+#include "GettingStart/HelloTexture/HelloTexture.h"
+#include "GettingStart/HelloTexture/HelloTextureExtend.h"
+#include "GettingStart/HelloTransform/HelloTransform.h"
+#include "GettingStart/HelloCoordSystem/HelloCoordSystem.h"
+#include "GettingStart/HelloCamera/HelloCamera.h"
 
-#include "HelloShader/HelloShader.h"
+#include "Lighting/HelloColor/HelloColors.h"
+
+#include "GettingStart/HelloShader/HelloShader.h"
 
 
 int main(int argc, char * argv[]) {
@@ -27,12 +29,15 @@ int main(int argc, char * argv[]) {
 //    HelloTextureExtend helloTextureExtend;
 //    helloTextureExtend.runHelloTextureSmile();
 
-    HelloTransform helloTransform;
-    helloTransform.runHelloTransformRotateRepeatly();
+//    HelloTransform helloTransform;
+//    helloTransform.runHelloTransformRotateRepeatly();
 
 //    HelloCoordSystem helloCoordSystem;
 //    helloCoordSystem.runHelloCoordSystem();
 
-//    HelloCamera helloCamera;
-//    helloCamera.runHelloCameraLookAround();
+    HelloCamera helloCamera;
+    helloCamera.runHelloCameraLookAround();
+
+//    HelloColors helloColors;
+//    helloColors.runHelloColor();
 }

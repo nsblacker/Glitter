@@ -7,7 +7,8 @@
 
 
 class HelloColors {
-
+public:
+    int runHelloColor();
 };
 
 

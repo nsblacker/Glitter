@@ -19,7 +19,7 @@
 #include <stb_image.h>
 
 // Custom Headers
-#include "GettingStart/HelloShader/ShaderMgr.h"
+#include "../Service/ShaderMgr.h"
 
 // Define Some Constants
 const int mWidth = 1280;
